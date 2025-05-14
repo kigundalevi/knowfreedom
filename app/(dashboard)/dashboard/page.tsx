@@ -1,5 +1,9 @@
 'use client'
 
+// Dashboard page - the main landing page after login
+// Shows key stats, recent activities, and service opportunities
+// Acts as a hub for users to navigate to other sections
+
 import { useAuth } from '@/context/AuthContext';
 import { StatCard } from '@/components/ui/stat-card';
 import { ActivityCard } from '@/components/ui/activity-card';
@@ -14,6 +18,8 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8 px-6 pb-6 rounded-b-2xl" style={{ backgroundColor: '#F3F6FF' }}>
 
+      {/* Stats section - shows key metrics in card format */}
+      {/* Responsive grid: 1 column on mobile, 3 columns on larger screens */}
       <section className="mt-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <StatCard
@@ -37,6 +43,8 @@ export default function DashboardPage() {
         </div>
       </section>
 
+      {/* Recent Activities section */}
+      {/* Shows the latest volunteer activities with a link to view all */}
       <section className="mt-20">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-semibold text-[#3F5363]">Recent Activities</h2>
@@ -61,6 +69,8 @@ export default function DashboardPage() {
         </div>
       </section>
 
+      {/* Service Opportunities section */}
+      {/* Displays available volunteer opportunities with visual cards */}
       <section className="border border-border rounded-xl p-6 bg-white">
         <h2 className="text-xl font-semibold mb-4 text-[#3F5363]">Service Opportunity Announcements</h2>
         

@@ -1,5 +1,9 @@
 'use client'
 
+// Rewards page - shows earned rewards, transaction history, and total points
+// Users can view their reward history and purchase new licenses
+// The page includes a paginated table for transaction history
+
 import { useState } from 'react';
 import { mockRewardHistory } from '@/lib/mock-data';
 import { useAuth } from '@/context/AuthContext';
@@ -21,38 +25,46 @@ import {
   PaginationLink, 
   PaginationNext, 
   PaginationPrevious 
-} from '@/components/ui/pagination';
+} from "@/components/ui/pagination";
 import { Badge } from '@/components/ui/badge';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 
 export default function RewardsPage() {
   const { user } = useAuth();
+  // State to track current page for the paginated reward history table
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  // Pagination settings for the reward history table
+  const itemsPerPage = 5; // Number of transactions to show per page
   const totalPages = Math.ceil(mockRewardHistory.length / itemsPerPage);
 
+  // Handler for changing the current page
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
 
+  // Get only the transactions for the current page
   const displayedHistory = mockRewardHistory.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
     <div className="px-6 pb-6" style={{ backgroundColor: '#F3F6FF' }}>
       
+      {/* Header section with Overview title and Buy Licenses button */}
       <div className="flex justify-between items-center mb-4 mt-4">
         {/* Page Title */}
         <div>
           <h2 className="text-lg font-medium text-gray-700">Overview</h2>
         </div>
         
-        {/* Buy Licenses Button */}
+        {/* Buy Licenses Button - primary action for this page */}
         <Button className="bg-cyan-600 hover:bg-cyan-700 text-white text-sm">
           <span>Buy Licenses</span>
           <ArrowRight className="w-4 h-4 ml-2" />
         </Button>
       </div>
+      {/* Stats cards section - shows key reward metrics */}
+      {/* Responsive grid: 1 column on mobile, 3 columns on larger screens */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 mt-3">
+        {/* Total earned points card */}
         <div className="bg-white rounded-lg p-5 shadow-sm">
           <h3 className="text-xs font-medium text-gray-500 uppercase mb-2">Total Earned (All Time)</h3>
           <div className="flex items-baseline">
@@ -61,6 +73,7 @@ export default function RewardsPage() {
           </div>
         </div>
 
+        {/* Most recent distribution card */}
         <div className="bg-white rounded-lg p-5 shadow-sm">
           <h3 className="text-xs font-medium text-gray-500 uppercase mb-2">Most Recent Distribution</h3>
           <div className="flex items-baseline">
@@ -69,15 +82,18 @@ export default function RewardsPage() {
           </div>
         </div>
 
+        {/* Next payout points card */}
         <div className="bg-white rounded-lg p-5 shadow-sm">
-          <h3 className="text-xs font-medium text-gray-500 uppercase mb-2">Most Recent Daily Points</h3>
+          <h3 className="text-xs font-medium text-gray-500 uppercase mb-2">Next Payout Date Points</h3>
           <div className="flex items-baseline">
             <span className="text-2xl font-bold text-gray-800">20,000</span>
+            <span className="ml-1 text-sm font-medium text-cyan-600"></span>
           </div>
         </div>
       </section>
 
-      {/* Reward History Section */}
+      {/* Reward History Section - displays transaction history in a table */}
+      {/* Shows date, points, rank, reward, and status for each transaction */}
       <h2 className="text-lg font-medium text-gray-700 mb-4">Reward History</h2>
       <section className="bg-white rounded-lg shadow-sm p-4">
         
@@ -114,6 +130,7 @@ export default function RewardsPage() {
           </Table>
         </div>
         
+        {/* Pagination controls for navigating through reward history */}
         <div className="flex items-center justify-center mt-8">
           <Pagination>
             <PaginationContent className="flex items-center space-x-1">

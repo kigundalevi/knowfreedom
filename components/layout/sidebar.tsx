@@ -1,5 +1,8 @@
 'use client'
 
+// This sidebar component is the main navigation for the dashboard
+// It includes a collapsible feature to save space when needed
+
 import { useAuth } from '@/context/AuthContext';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -19,6 +22,8 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 
+// Navigation items with their routes and icons
+// This makes it easy to add or modify menu items in one place
 const navItems = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { name: 'Activity', href: '/activity', icon: Activity },
@@ -32,6 +37,7 @@ const navItems = [
 export function Sidebar() {
   const pathname = usePathname();
   const { logout } = useAuth();
+  // State to track whether sidebar is collapsed or expanded
   const [collapsed, setCollapsed] = useState(false);
 
   return (
@@ -39,12 +45,14 @@ export function Sidebar() {
       "hidden md:flex flex-col h-screen bg-white transition-all duration-300 relative",
       collapsed ? "w-20" : "w-64"
     )}>
-      {/* Toggle button - now inside the sidebar */}
+      {/* Toggle button for collapsing/expanding the sidebar */}
+      {/* Positioned to overlap the sidebar edge for better visibility */}
       <div className="flex justify-end px-4 mt-6">
       <button 
         onClick={() => setCollapsed(!collapsed)}
-        className="absolute -right-3 top-20 bg-white rounded-full p-1  z-10 hover:bg-gray-50 transition-colors"
+        className="absolute -right-3 top-20 bg-white rounded-full p-1 z-10 hover:bg-gray-50 transition-colors"
       >
+        {/* Change the arrow direction based on sidebar state */}
         {collapsed ? 
           <ChevronRight className="h-5 w-5 text-gray-600" /> : 
           <ChevronLeft className="h-5 w-5 text-gray-600" />
@@ -77,6 +85,7 @@ export function Sidebar() {
         <ul className="space-y-2">
           {navItems.map((item) => {
             // Check if the current path starts with the nav item's href
+            // Check if current path matches this nav item to highlight it
             const isActive = pathname.includes(item.href);
             
             return (
