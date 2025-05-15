@@ -95,16 +95,13 @@ export function Sidebar() {
                   className={cn(
                     "flex items-center gap-3 rounded-md px-4 py-3 text-sm font-medium transition-colors",
                     isActive 
-                      ? "bg-cyan-50 text-cyan-600 border-l-4 border-cyan-500" 
+                      ? "text-cyan-600" 
                       : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   )}
                   title={collapsed ? item.name : undefined}
                 >
-                  <item.icon className={cn("h-5 w-5", isActive ? "text-cyan-600" : "text-gray-500")} />
+                  <item.icon className={cn("h-8 w-8", isActive ? "text-white  bg-[#078CBC] p-1 rounded-xl" : "text-gray-500")} />
                   {!collapsed && <span>{item.name}</span>}
-                  {!collapsed && isActive && item.name === "Rewards" && (
-                    <div className="ml-auto w-2 h-2 rounded-full bg-cyan-500"></div>
-                  )}
                 </Link>
               </li>
             );
