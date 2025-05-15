@@ -23,7 +23,7 @@ export default function MarketPage() {
     : mockRewards.filter(reward => reward.category === category);
 
   return (
-    <div className="space-y-8 px-6 pb-6" style={{ backgroundColor: '#F3F6FF' }}>
+    <div className="space-y-8 px-6 pb-6 rounded-b-2xl" style={{ backgroundColor: '#F3F6FF' }}>
 
       {/* Category tabs for filtering rewards */}
       <section className="mt-6">

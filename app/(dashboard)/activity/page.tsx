@@ -9,7 +9,7 @@ import { ActivityCard } from '@/components/ui/activity-card';
 
 export default function ActivityPage() {
   return (
-    <div className="space-y-6 px-6 pb-6" style={{ backgroundColor: '#F3F6FF' }}>
+    <div className="space-y-6 px-6 pb-6 rounded-b-2xl" style={{ backgroundColor: '#F3F6FF' }}>
 
       {/* Activity feed - displays all activities in a vertical list */}
       {/* Each activity is shown in a card with details like date, organization, hours */}

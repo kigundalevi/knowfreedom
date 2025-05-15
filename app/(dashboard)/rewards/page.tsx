@@ -46,7 +46,7 @@ export default function RewardsPage() {
   const displayedHistory = mockRewardHistory.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
-    <div className="px-6 pb-6" style={{ backgroundColor: '#F3F6FF' }}>
+    <div className="px-6 pb-6 rounded-b-2xl" style={{ backgroundColor: '#F3F6FF' }}>
 
       {/* Header section with Overview title and Buy Licenses button */}
       <div className="flex justify-between items-center mb-4 mt-4">
