@@ -67,7 +67,6 @@ export default function DashboardLayout({
         
         <main className="flex-1 overflow-y-auto bg-white rounded-xl  ml-4">
         <div className="flex flex-col flex-1 overflow-hidden">
-        {/* Top bar with page title and user dropdown */}
         {/* Header bar with page title and user info */}
         <div className="flex justify-between items-center px-6 py-4 bg-[#f3f6ff] relative border--200 rounded-t-2xl">
           {/* Left side: Page title and mobile menu */}

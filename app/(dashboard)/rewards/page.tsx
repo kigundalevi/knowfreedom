@@ -17,14 +17,14 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from '@/components/ui/button';
-import { 
-  Pagination, 
-  PaginationContent, 
-  PaginationEllipsis, 
-  PaginationItem, 
-  PaginationLink, 
-  PaginationNext, 
-  PaginationPrevious 
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious
 } from "@/components/ui/pagination";
 import { Badge } from '@/components/ui/badge';
 import { ChevronDown, ArrowRight } from 'lucide-react';
@@ -47,21 +47,18 @@ export default function RewardsPage() {
 
   return (
     <div className="px-6 pb-6" style={{ backgroundColor: '#F3F6FF' }}>
-      
+
       {/* Header section with Overview title and Buy Licenses button */}
       <div className="flex justify-between items-center mb-4 mt-4">
-        {/* Page Title */}
         <div>
           <h2 className="text-lg font-medium text-gray-700">Overview</h2>
         </div>
-        
-        {/* Buy Licenses Button - primary action for this page */}
+
         <Button className="bg-cyan-600 hover:bg-cyan-700 text-white text-sm">
           <span>Buy Licenses</span>
           <ArrowRight className="w-4 h-4 ml-2" />
         </Button>
       </div>
-      {/* Stats cards section - shows key reward metrics */}
       {/* Responsive grid: 1 column on mobile, 3 columns on larger screens */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 mt-3">
         {/* Total earned points card */}
@@ -96,7 +93,7 @@ export default function RewardsPage() {
       {/* Shows date, points, rank, reward, and status for each transaction */}
       <h2 className="text-lg font-medium text-gray-700 mb-4">Reward History</h2>
       <section className="bg-white rounded-lg shadow-sm p-4">
-        
+
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
@@ -116,9 +113,9 @@ export default function RewardsPage() {
                   <TableCell className="py-4 text-sm text-gray-800">{item.rank}</TableCell>
                   <TableCell className="py-4 text-sm font-medium text-cyan-600">{item.reward}</TableCell>
                   <TableCell className="py-4">
-                    <Badge 
-                      className={item.status === 'Distributed' 
-                        ? 'bg-green-100 text-green-700 hover:bg-green-100 rounded-full px-3 py-1 text-xs font-medium' 
+                    <Badge
+                      className={item.status === 'Distributed'
+                        ? 'bg-green-100 text-green-700 hover:bg-green-100 rounded-full px-3 py-1 text-xs font-medium'
                         : 'bg-yellow-100 text-yellow-700 hover:bg-yellow-100 rounded-full px-3 py-1 text-xs font-medium'}
                     >
                       {item.status === 'Distributed' ? '• Distributed' : '• Pending'}
@@ -129,14 +126,14 @@ export default function RewardsPage() {
             </TableBody>
           </Table>
         </div>
-        
+
         {/* Pagination controls for navigating through reward history */}
-        <div className="flex items-center justify-center mt-8">
-          <Pagination>
-            <PaginationContent className="flex items-center space-x-1">
+        <div className="flex items-start w-full mt-8">
+          <Pagination className="w-full">
+            <PaginationContent className="flex items-center justify-end space-x-1">
               <PaginationItem>
-                <PaginationPrevious 
-                  href="#" 
+                <PaginationPrevious
+                  href="#"
                   onClick={(e) => {
                     e.preventDefault();
                     if (currentPage > 1) {
@@ -146,82 +143,82 @@ export default function RewardsPage() {
                   className={`${currentPage === 1 ? 'pointer-events-none opacity-50' : ''} text-gray-500 hover:text-gray-700`}
                 />
               </PaginationItem>
-              
+
               <PaginationItem>
-                <PaginationLink 
-                  href="#" 
+                <PaginationLink
+                  href="#"
                   isActive={currentPage === 1}
                   onClick={(e) => {
                     e.preventDefault();
                     handlePageChange(1);
                   }}
-                  className={`w-8 h-8 flex items-center justify-center rounded-md ${currentPage === 1 ? 'bg-cyan-600 text-white' : 'text-gray-700 hover:bg-gray-100'}`}
+                  className={`w-8 h-8 flex items-center justify-center rounded-md ${currentPage === 1 ? 'bg-gray-100 text-gray-700' : 'text-gray-700 hover:bg-gray-100'}`}
                 >
                   1
                 </PaginationLink>
               </PaginationItem>
-              
+
               <PaginationItem>
-                <PaginationLink 
-                  href="#" 
+                <PaginationLink
+                  href="#"
                   isActive={currentPage === 2}
                   onClick={(e) => {
                     e.preventDefault();
                     handlePageChange(2);
                   }}
-                  className={`w-8 h-8 flex items-center justify-center rounded-md ${currentPage === 2 ? 'bg-cyan-600 text-white' : 'text-gray-700 hover:bg-gray-100'}`}
+                  className={`w-8 h-8 flex items-center justify-center rounded-md ${currentPage === 2 ? 'bg-gray-100 text-gray-700' : 'text-gray-700 hover:bg-gray-100'}`}
                 >
                   2
                 </PaginationLink>
               </PaginationItem>
-              
+
               <PaginationItem>
-                <PaginationLink 
-                  href="#" 
+                <PaginationLink
+                  href="#"
                   isActive={currentPage === 3}
                   onClick={(e) => {
                     e.preventDefault();
                     handlePageChange(3);
                   }}
-                  className={`w-8 h-8 flex items-center justify-center rounded-md ${currentPage === 3 ? 'bg-cyan-600 text-white' : 'text-gray-700 hover:bg-gray-100'}`}
+                  className={`w-8 h-8 flex items-center justify-center rounded-md ${currentPage === 3 ? 'bg-gray-100 text-gray-700' : 'text-gray-700 hover:bg-gray-100'}`}
                 >
                   3
                 </PaginationLink>
               </PaginationItem>
-              
+
               <PaginationItem>
-                <PaginationLink 
-                  href="#" 
+                <PaginationLink
+                  href="#"
                   isActive={currentPage === 4}
                   onClick={(e) => {
                     e.preventDefault();
                     handlePageChange(4);
                   }}
-                  className={`w-8 h-8 flex items-center justify-center rounded-md ${currentPage === 4 ? 'bg-cyan-600 text-white' : 'text-gray-700 hover:bg-gray-100'}`}
+                  className={`w-8 h-8 flex items-center justify-center rounded-md ${currentPage === 4 ? 'bg-gray-100 text-gray-700' : 'text-gray-700 hover:bg-gray-100'}`}
                 >
                   4
                 </PaginationLink>
               </PaginationItem>
-              
+
               <PaginationItem className="text-gray-400">...</PaginationItem>
-              
+
               <PaginationItem>
-                <PaginationLink 
-                  href="#" 
+                <PaginationLink
+                  href="#"
                   isActive={currentPage === 7}
                   onClick={(e) => {
                     e.preventDefault();
                     handlePageChange(7);
                   }}
-                  className={`w-8 h-8 flex items-center justify-center rounded-md ${currentPage === 7 ? 'bg-cyan-600 text-white' : 'text-gray-700 hover:bg-gray-100'}`}
+                  className={`w-8 h-8 flex items-center justify-center rounded-md ${currentPage === 7 ? 'bg-gray-100 text-gray-700' : 'text-gray-700 hover:bg-gray-100'}`}
                 >
                   7
                 </PaginationLink>
               </PaginationItem>
-              
+
               <PaginationItem>
-                <PaginationNext 
-                  href="#" 
+                <PaginationNext
+                  href="#"
                   onClick={(e) => {
                     e.preventDefault();
                     if (currentPage < totalPages) {

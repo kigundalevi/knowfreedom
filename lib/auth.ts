@@ -5,8 +5,8 @@ import { mockUser } from './mock-data';
 
 export const login = (email: string, password: string): Promise<User> => {
   return new Promise((resolve, reject) => {
-    // In a real app, this would make an API call
-    // For mock purposes, we'll just return success if the form is filled out
+    // In a real app this would make an API call
+    // For mock purpose just return success if the form is filled out
     if (email && password) {
       // Simulate network delay
       setTimeout(() => {
@@ -27,8 +27,8 @@ export const register = (
   password: string
 ): Promise<User> => {
   return new Promise((resolve, reject) => {
-    // In a real app, this would make an API call
-    // For mock purposes, we'll just return success if the form is filled out
+    // In a real app this would make an API call
+    // For mock purpose just return success if the form is filled out
     if (firstName && lastName && email && password) {
       // Simulate network delay
       setTimeout(() => {
