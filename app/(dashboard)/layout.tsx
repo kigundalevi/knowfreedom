@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 // Page titles and subtitles for each route
 // This allows us to display consistent headers across all pages
@@ -49,6 +50,10 @@ const pageTitles: Record<string, { title: string, subtitle: string }> = {
     title: 'Support',
     subtitle: 'Get help with any questions or issues.'
   },
+  '/profile': {
+    title: 'Profile Security',
+    subtitle: 'Manage your profile and security.'
+  }
 };
 
 export default function DashboardLayout({
@@ -56,7 +61,7 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const pathname = usePathname();
+  const router = useRouter();  const pathname = usePathname();
   const { user, logout } = useAuth();
 
   return (
@@ -105,6 +110,9 @@ export default function DashboardLayout({
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={() => router.push('/profile')}>
+                    Profile
+                  </DropdownMenuItem>
                   <DropdownMenuItem onClick={logout}>
                     Logout
                   </DropdownMenuItem>
@@ -116,5 +124,5 @@ export default function DashboardLayout({
         </div>
       </main>
     </div>
-  );
+  ); 
 }

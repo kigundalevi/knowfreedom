@@ -85,7 +85,6 @@ export function Sidebar() {
         <ul className="space-y-2">
           {navItems.map((item) => {
             // Check if the current path starts with the nav item's href
-            // Check if current path matches this nav item to highlight it
             const isActive = pathname.includes(item.href);
             
             return (
@@ -95,12 +94,12 @@ export function Sidebar() {
                   className={cn(
                     "flex items-center gap-3 rounded-md px-4 py-3 text-sm font-medium transition-colors",
                     isActive 
-                      ? "text-cyan-600" 
+                      ? "bg-cyan-50 text-cyan-600 border-l-4 border-cyan-500" 
                       : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   )}
                   title={collapsed ? item.name : undefined}
                 >
-                  <item.icon className={cn("h-8 w-8", isActive ? "text-white  bg-[#078CBC] p-1 rounded-xl" : "text-gray-500")} />
+                  <item.icon className={cn("h-5 w-5", isActive ? "text-cyan-600" : "text-gray-500")} />
                   {!collapsed && <span>{item.name}</span>}
                 </Link>
               </li>
@@ -110,7 +109,7 @@ export function Sidebar() {
       </nav>
 
       {/* Logout Section */}
-      <div className="p-4 mt-auto border-t border-gray-200">
+      <div className="p-4 mb-2 border-t border-gray-200">
         <button 
           onClick={logout}
           className="flex w-full items-center gap-3 rounded-md px-4 py-3 text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 hover:bg-gray-50"

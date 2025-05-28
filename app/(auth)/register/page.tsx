@@ -149,7 +149,7 @@ export default function RegisterPage() {
               <Label htmlFor="confirm-password">Confirm Password</Label>
               <div className="relative">
                 <Input
-                className="bg-[#F3F6FF] text-gray-900 sm:text-sm rounded-lg"
+                 className="bg-[#F3F6FF] text-gray-900 sm:text-sm rounded-lg"
                   id="confirm-password"
                   type={showConfirmPassword ? "text" : "password"}
                   value={confirmPassword}
